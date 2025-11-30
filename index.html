@@ -1,83 +1,90 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>A Jornada do Catatal — Versão Neon</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeMaster Academy</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="fundo-animado"></div>
-
 <header>
-    <h1 class="logo">⚡ CATATAL SYSTEM</h1>
+    <h1>CodeMaster Academy</h1>
+    <nav>
+        <button onclick="openScreen('home')">Home</button>
+        <button onclick="openScreen('matematica')">Matemática</button>
+        <button onclick="openScreen('programacao')">Programação</button>
+        <button onclick="openScreen('htmlcss')">HTML/CSS</button>
+    </nav>
 </header>
 
-<!-- Tela inicial -->
-<section id="tela-inicio" class="tela ativo">
-    <h2 class="titulo-inicial">A Jornada do Catatal</h2>
-    <img src="https://via.placeholder.com/250x250/0000FF/FFFFFF?text=CATATAL" class="catatal-img">
+<section id="home" class="screen visible">
+    <h2>Bem-vindo à CodeMaster Academy!</h2>
+    <p>Aprenda matemática, programação e HTML/CSS de um jeito divertido e interativo — ao lado do seu guia, <strong>Catatal</strong>.</p>
 
-    <button class="btn neon" onclick="iniciar()">INICIAR MISSÃO</button>
+    <img src="catatal.png" class="catatal-home">
+
+    <p class="home-desc">Escolha uma área acima para começar seus desafios! Seu progresso será salvo automaticamente.</p>
 </section>
 
-<!-- Menu principal -->
-<section id="menu" class="tela">
-    <h2 class="subtitulo">🌐 Painel de Controle</h2>
+<!-- MATEMÁTICA -->
+<section id="matematica" class="screen">
+    <h2>Matemática</h2>
+    <p class="explain">
+        A matemática é a base da lógica usada em programação e na vida real.  
+        Vamos começar com algo simples: <strong>operações básicas</strong>.
+    </p>
 
-    <p class="xp">XP Total: <span id="xp-total">0</span></p>
+    <div id="math-question" class="question-box"></div>
+    <input type="number" id="math-answer" placeholder="Digite sua resposta">
+    <button onclick="checkMath()">Responder</button>
 
-    <div class="menu-cards">
-        <div class="card neon-card" onclick="abrirModulo('matematica')">
-            <h3>Matemática</h3>
-            <p>Desafios lógicos futuristas</p>
-        </div>
+    <p id="math-result" class="result"></p>
 
-        <div class="card neon-card" onclick="abrirModulo('programacao')">
-            <h3>Programação</h3>
-            <p>JS + lógica computacional</p>
-        </div>
+    <img src="catatal.png" class="catatal-side">
+</section>
 
-        <div class="card neon-card" onclick="abrirModulo('htmlcss')">
-            <h3>HTML/CSS</h3>
-            <p>Estrutura e estilo web</p>
-        </div>
+<!-- PROGRAMAÇÃO -->
+<section id="programacao" class="screen">
+    <h2>Programação</h2>
+    <p class="explain">
+        Programar é ensinar o computador a resolver problemas.  
+        Primeiro, entenda que um programa segue <strong>sequências de passos</strong>.
+    </p>
+
+    <div class="question-box">
+        <p><strong>Pergunta:</strong>  
+        Qual dessas opções representa um comando de saída em JavaScript?</p>
+
+        <button onclick="checkProg('a')">A) print("Olá")</button>
+        <button onclick="checkProg('b')">B) document.write("Olá")</button>
+        <button onclick="checkProg('c')">C) echo "Olá"</button>
     </div>
+
+    <p id="prog-result" class="result"></p>
+    <img src="catatal.png" class="catatal-side">
 </section>
 
-<!-- Módulo matemática -->
-<section id="matematica" class="tela">
-    <h2>⚡ Matemática Futurista</h2>
+<!-- HTML/CSS -->
+<section id="htmlcss" class="screen">
+    <h2>HTML / CSS</h2>
+    <p class="explain">
+        HTML estrutura a página.  
+        CSS deixa tudo bonito.  
+        Vamos ver se você entendeu o básico.
+    </p>
 
-    <p id="pergunta-mat"></p>
-    <input type="number" id="resposta-mat" class="campo neon-input">
-    <button class="btn neon" onclick="verificarMat()">RESPONDER</button>
-    <p id="feedback-mat"></p>
+    <div class="question-box">
+        <p><strong>Pergunta:</strong>  
+        Qual tag é usada para criar um parágrafo?</p>
 
-    <button class="btn voltar" onclick="voltarMenu()">VOLTAR</button>
-</section>
+        <button onclick="checkHtml('a')">A) &lt;div&gt;</button>
+        <button onclick="checkHtml('b')">B) &lt;p&gt;</button>
+        <button onclick="checkHtml('c')">C) &lt;text&gt;</button>
+    </div>
 
-<!-- Módulo programação -->
-<section id="programacao" class="tela">
-    <h2>⚡ Programação</h2>
-
-    <p id="pergunta-prog"></p>
-    <input type="text" id="resposta-prog" class="campo neon-input">
-    <button class="btn neon" onclick="verificarProg()">RESPONDER</button>
-    <p id="feedback-prog"></p>
-
-    <button class="btn voltar" onclick="voltarMenu()">VOLTAR</button>
-</section>
-
-<!-- Módulo HTML/CSS -->
-<section id="htmlcss" class="tela">
-    <h2>⚡ HTML & CSS</h2>
-
-    <p id="pergunta-web"></p>
-    <div id="opcoes-web" class="opcoes"></div>
-
-    <p id="feedback-web"></p>
-    <button class="btn voltar" onclick="voltarMenu()">VOLTAR</button>
+    <p id="html-result" class="result"></p>
+    <img src="catatal.png" class="catatal-side">
 </section>
 
 <script src="script.js"></script>
