@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>CodeMaster Academy</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CodeMaster Academy</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -40,7 +40,7 @@
         <img id="catatalHero" src="catatal/normal.png" alt="Catatal" class="catatal-hero">
         <div>
           <h1>Bem-vindo ao CodeMaster Academy</h1>
-          <p>Aprenda matemática, lógica e HTML/CSS com o Catatal. Escolha um módulo à esquerda e selecione "IA" para perguntas geradas por ChatGPT ou "Automático" para perguntas offline.</p>
+          <p>Aprenda matemática, lógica e HTML/CSS com o Catatal. Selecione o modo "IA" para geração por ChatGPT (requer configuração no Netlify).</p>
           <div class="cta">
             <button id="startMath" class="btn">Começar Matemática</button>
             <button id="startLogic" class="btn">Começar Lógica</button>
@@ -64,7 +64,7 @@
 
       <div id="mathCard" class="card">
         <div id="mathQuestion" class="question">Clique em "Nova pergunta" para gerar.</div>
-        <input id="mathAnswer" placeholder="Sua resposta (número/expressão)">
+        <input id="mathAnswer" placeholder="Sua resposta (texto ou número)">
         <div class="card-actions">
           <button id="newMath" class="btn ghost">Nova pergunta</button>
           <button id="checkMath" class="btn primary">Verificar</button>
@@ -109,10 +109,8 @@
   </section>
 </main>
 
-<!-- scripts -->
 <script src="automatic-questions.js"></script>
 <script src="ai-questions.js"></script>
-<script src="config.example.js"></script> <!-- rename to config.js locally or use serverless proxy -->
 <script src="script.js"></script>
 </body>
 </html>
