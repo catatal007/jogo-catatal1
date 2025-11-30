@@ -1,92 +1,118 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CodeMaster Academy</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CodeMaster Academy</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-    <h1>CodeMaster Academy</h1>
-    <nav>
-        <button onclick="openScreen('home')">Home</button>
-        <button onclick="openScreen('matematica')">Matemática</button>
-        <button onclick="openScreen('programacao')">Programação</button>
-        <button onclick="openScreen('htmlcss')">HTML/CSS</button>
-    </nav>
+<header class="topbar">
+  <div class="brand">CodeMaster Academy</div>
+  <div class="user">Aluno: catatal007</div>
 </header>
 
-<section id="home" class="screen visible">
-    <h2>Bem-vindo à CodeMaster Academy!</h2>
-    <p>Aprenda matemática, programação e HTML/CSS de um jeito divertido e interativo — ao lado do seu guia, <strong>Catatal</strong>.</p>
+<main class="wrap">
+  <aside class="sidebar">
+    <img id="catatalSmall" src="catatal/normal.png" alt="Catatal" class="catatal-small">
+    <nav>
+      <button data-screen="home" class="navbtn active">Início</button>
+      <button data-screen="math" class="navbtn">Matemática</button>
+      <button data-screen="logic" class="navbtn">Lógica</button>
+      <button data-screen="web" class="navbtn">HTML & CSS</button>
+    </nav>
 
-    <img src="catatal.png" class="catatal-home">
+    <div class="mode">
+      <label>Origem das perguntas</label>
+      <select id="modeSelect">
+        <option value="auto">Automático (offline)</option>
+        <option value="ai">IA (OpenAI)</option>
+      </select>
+      <button id="exportProgress" class="small">Exportar progresso</button>
+    </div>
+  </aside>
 
-    <p class="home-desc">Escolha uma área acima para começar seus desafios! Seu progresso será salvo automaticamente.</p>
-</section>
-
-<!-- MATEMÁTICA -->
-<section id="matematica" class="screen">
-    <h2>Matemática</h2>
-    <p class="explain">
-        A matemática é a base da lógica usada em programação e na vida real.  
-        Vamos começar com algo simples: <strong>operações básicas</strong>.
-    </p>
-
-    <div id="math-question" class="question-box"></div>
-    <input type="number" id="math-answer" placeholder="Digite sua resposta">
-    <button onclick="checkMath()">Responder</button>
-
-    <p id="math-result" class="result"></p>
-
-    <img src="catatal.png" class="catatal-side">
-</section>
-
-<!-- PROGRAMAÇÃO -->
-<section id="programacao" class="screen">
-    <h2>Programação</h2>
-    <p class="explain">
-        Programar é ensinar o computador a resolver problemas.  
-        Primeiro, entenda que um programa segue <strong>sequências de passos</strong>.
-    </p>
-
-    <div class="question-box">
-        <p><strong>Pergunta:</strong>  
-        Qual dessas opções representa um comando de saída em JavaScript?</p>
-
-        <button onclick="checkProg('a')">A) print("Olá")</button>
-        <button onclick="checkProg('b')">B) document.write("Olá")</button>
-        <button onclick="checkProg('c')">C) echo "Olá"</button>
+  <section class="content">
+    <!-- HOME -->
+    <div id="screen-home" class="screen visible">
+      <div class="hero">
+        <img id="catatalHero" src="catatal/normal.png" alt="Catatal" class="catatal-hero">
+        <div>
+          <h1>Bem-vindo ao CodeMaster Academy</h1>
+          <p>Aprenda matemática, lógica e HTML/CSS com o Catatal. Escolha um módulo à esquerda e selecione "IA" para perguntas geradas por ChatGPT ou "Automático" para perguntas offline.</p>
+          <div class="cta">
+            <button id="startMath" class="btn">Começar Matemática</button>
+            <button id="startLogic" class="btn">Começar Lógica</button>
+            <button id="startWeb" class="btn">Começar HTML/CSS</button>
+          </div>
+        </div>
+      </div>
+      <div class="stats">
+        <div>Pontos: <span id="score">0</span></div>
+        <div>Último módulo: <span id="lastModule">—</span></div>
+      </div>
     </div>
 
-    <p id="prog-result" class="result"></p>
-    <img src="catatal.png" class="catatal-side">
-</section>
+    <!-- MATEMÁTICA -->
+    <div id="screen-math" class="screen">
+      <h2>Matemática</h2>
+      <div class="lesson">
+        <h3 id="mathTitle">Conceito</h3>
+        <p id="mathExplain">(A explicação aparecerá aqui antes da pergunta.)</p>
+      </div>
 
-<!-- HTML/CSS -->
-<section id="htmlcss" class="screen">
-    <h2>HTML / CSS</h2>
-    <p class="explain">
-        HTML estrutura a página.  
-        CSS deixa tudo bonito.  
-        Vamos ver se você entendeu o básico.
-    </p>
-
-    <div class="question-box">
-        <p><strong>Pergunta:</strong>  
-        Qual tag é usada para criar um parágrafo?</p>
-
-        <button onclick="checkHtml('a')">A) &lt;div&gt;</button>
-        <button onclick="checkHtml('b')">B) &lt;p&gt;</button>
-        <button onclick="checkHtml('c')">C) &lt;text&gt;</button>
+      <div id="mathCard" class="card">
+        <div id="mathQuestion" class="question">Clique em "Nova pergunta" para gerar.</div>
+        <input id="mathAnswer" placeholder="Sua resposta (número/expressão)">
+        <div class="card-actions">
+          <button id="newMath" class="btn ghost">Nova pergunta</button>
+          <button id="checkMath" class="btn primary">Verificar</button>
+        </div>
+        <div id="mathFeedback" class="feedback"></div>
+      </div>
     </div>
 
-    <p id="html-result" class="result"></p>
-    <img src="catatal.png" class="catatal-side">
-</section>
+    <!-- LÓGICA -->
+    <div id="screen-logic" class="screen">
+      <h2>Lógica de Programação</h2>
+      <div class="lesson">
+        <p id="logicExplain">(Explicação antes da pergunta.)</p>
+      </div>
+      <div id="logicCard" class="card">
+        <div id="logicQuestion" class="question">Clique em "Nova pergunta".</div>
+        <input id="logicAnswer" placeholder="Sua resposta">
+        <div class="card-actions">
+          <button id="newLogic" class="btn ghost">Nova pergunta</button>
+          <button id="checkLogic" class="btn primary">Verificar</button>
+        </div>
+        <div id="logicFeedback" class="feedback"></div>
+      </div>
+    </div>
 
+    <!-- WEB (HTML/CSS) -->
+    <div id="screen-web" class="screen">
+      <h2>HTML & CSS</h2>
+      <div class="lesson">
+        <p id="webExplain">(Explicação antes da pergunta.)</p>
+      </div>
+      <div id="webCard" class="card">
+        <div id="webQuestion" class="question">Clique em "Nova pergunta".</div>
+        <div id="webOptions" class="options"></div>
+        <div class="card-actions">
+          <button id="newWeb" class="btn ghost">Nova pergunta</button>
+        </div>
+        <div id="webFeedback" class="feedback"></div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- scripts -->
+<script src="automatic-questions.js"></script>
+<script src="ai-questions.js"></script>
+<script src="config.example.js"></script> <!-- rename to config.js locally or use serverless proxy -->
 <script src="script.js"></script>
 </body>
 </html>
