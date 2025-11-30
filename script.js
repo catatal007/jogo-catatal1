@@ -1,123 +1,107 @@
-let pontos = 0;
+let xp = 0;
 
-// Alternar telas
-function mostrar(tela) {
-    document.querySelectorAll(".tela").forEach(t => t.classList.add("escondido"));
-    document.getElementById(tela).classList.remove("escondido");
+function mudarTela(id) {
+    document.querySelectorAll(".tela").forEach(t => t.classList.remove("ativo"));
+    document.getElementById(id).classList.add("ativo");
 }
 
-function iniciarJogo() {
-    mostrar("menu");
+function iniciar() {
+    mudarTela("menu");
 }
 
 function voltarMenu() {
-    mostrar("menu");
+    mudarTela("menu");
 }
 
-// ------------------ MATEMÁTICA ------------------------
+function abrirModulo(m) {
+    mudarTela(m);
 
-let n1, n2;
-
-function abrirModulo(modulo) {
-    mostrar(modulo);
-
-    if (modulo === "matematica") gerarPerguntaMatematica();
-    if (modulo === "programacao") gerarPerguntaProgramacao();
-    if (modulo === "htmlcss") gerarPerguntaWeb();
+    if (m === "matematica") gerarMat();
+    if (m === "programacao") gerarProg();
+    if (m === "htmlcss") gerarWeb();
 }
 
-// Matemática
-function gerarPerguntaMatematica() {
-    n1 = Math.floor(Math.random() * 10) + 1;
-    n2 = Math.floor(Math.random() * 10) + 1;
+/* -------- MATEMÁTICA -------- */
+let a, b;
 
-    document.getElementById("pergunta-mat").innerText =
-        `Quanto é ${n1} + ${n2}?`;
+function gerarMat() {
+    a = Math.floor(Math.random() * 20) + 1;
+    b = Math.floor(Math.random() * 20) + 1;
+
+    document.getElementById("pergunta-mat").innerText = `Quanto é ${a} + ${b}?`;
 }
 
-function verificarMatematica() {
+function verificarMat() {
     let resp = Number(document.getElementById("resposta-mat").value);
-    let feedback = document.getElementById("feedback-mat");
+    if (resp === a + b) ganharXP("feedback-mat");
+    else perder("feedback-mat");
 
-    if (resp === n1 + n2) {
-        feedback.innerText = "Acertou! +1 ponto";
-        pontos++;
-    } else {
-        feedback.innerText = "Errou! Tente outra.";
-    }
-
-    document.getElementById("pontos-total").innerText = pontos;
-
-    gerarPerguntaMatematica();
+    gerarMat();
 }
 
-// ------------------ PROGRAMAÇÃO ------------------------
+/* -------- PROGRAMAÇÃO -------- */
 
-let perguntasProg = [
-    { p: "Qual é a saída de: console.log(2 + 2)?", r: "4" },
-    { p: "Como se declara uma variável em JavaScript?", r: "let" },
-    { p: "Qual comando imprime algo no console?", r: "console.log" }
+let listaProg = [
+    { p: "Qual comando imprime no console?", r: "console.log" },
+    { p: "Como declarar variável?", r: "let" },
+    { p: "2 + '2' resulta em?", r: "22" }
 ];
 
 let atualProg;
 
-function gerarPerguntaProgramacao() {
-    atualProg = perguntasProg[Math.floor(Math.random() * perguntasProg.length)];
+function gerarProg() {
+    atualProg = listaProg[Math.floor(Math.random() * listaProg.length)];
     document.getElementById("pergunta-prog").innerText = atualProg.p;
 }
 
-function verificarProgramacao() {
+function verificarProg() {
     let resp = document.getElementById("resposta-prog").value.toLowerCase();
-    let feedback = document.getElementById("feedback-prog");
+    if (resp.includes(atualProg.r)) ganharXP("feedback-prog");
+    else perder("feedback-prog");
 
-    if (resp.includes(atualProg.r)) {
-        feedback.innerText = "Acertou! +1 ponto";
-        pontos++;
-    } else {
-        feedback.innerText = "Errou! Resposta correta: " + atualProg.r;
-    }
-
-    document.getElementById("pontos-total").innerText = pontos;
-    gerarPerguntaProgramacao();
+    gerarProg();
 }
 
-// ------------------ HTML e CSS -------------------------
+/* -------- HTML/CSS -------- */
 
-let perguntasWeb = [
-    { p: "Qual tag cria um título?", op: ["<img>", "<h1>", "<p>"], r: "<h1>" },
-    { p: "Qual CSS muda a cor do texto?", op: ["color", "background", "border"], r: "color" },
-    { p: "Qual tag cria uma imagem?", op: ["<div>", "<section>", "<img>"], r: "<img>" }
+let listaWeb = [
+    { p: "Qual tag insere uma imagem?", op: ["<img>", "<h1>", "<p>"], r: "<img>" },
+    { p: "Qual CSS muda a cor do texto?", op: ["color", "margin", "border"], r: "color" },
 ];
 
 let atualWeb;
 
-function gerarPerguntaWeb() {
-    let c = document.getElementById("opcoes-web");
-    c.innerHTML = "";
+function gerarWeb() {
+    let area = document.getElementById("opcoes-web");
+    area.innerHTML = "";
 
-    atualWeb = perguntasWeb[Math.floor(Math.random() * perguntasWeb.length)];
+    atualWeb = listaWeb[Math.floor(Math.random() * listaWeb.length)];
 
     document.getElementById("pergunta-web").innerText = atualWeb.p;
 
-    atualWeb.op.forEach(op => {
+    atualWeb.op.forEach(o => {
         let btn = document.createElement("button");
-        btn.className = "botao";
-        btn.innerText = op;
-        btn.onclick = () => verificarWeb(op);
-        c.appendChild(btn);
+        btn.className = "btn neon";
+        btn.innerText = o;
+        btn.onclick = () => verificarWeb(o);
+        area.appendChild(btn);
     });
 }
 
-function verificarWeb(opSelecionada) {
-    let feedback = document.getElementById("feedback-web");
+function verificarWeb(op) {
+    if (op === atualWeb.r) ganharXP("feedback-web");
+    else perder("feedback-web");
 
-    if (opSelecionada === atualWeb.r) {
-        feedback.innerText = "Acertou! +1 ponto";
-        pontos++;
-    } else {
-        feedback.innerText = "Errou! Resposta correta: " + atualWeb.r;
-    }
+    gerarWeb();
+}
 
-    document.getElementById("pontos-total").innerText = pontos;
-    gerarPerguntaWeb();
+/* -------- SISTEMA DE XP -------- */
+function ganharXP(id) {
+    xp++;
+    document.getElementById(id).innerText = "✔ CORRETO! +1 XP";
+    document.getElementById("xp-total").innerText = xp;
+}
+
+function perder(id) {
+    document.getElementById(id).innerText = "✘ Resposta incorreta.";
 }
