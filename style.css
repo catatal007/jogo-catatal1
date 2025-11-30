@@ -1,6 +1,5 @@
 :root{
   --bg:#05060a; --panel:#071225; --accent:#00d4ff; --accent2:#ff3b3b;
-  --glass: rgba(255,255,255,0.03);
   --muted:#9bb7c9;
 }
 *{box-sizing:border-box}
@@ -10,7 +9,7 @@ body{margin:0;background:linear-gradient(180deg,#000814,#00172b);color:#e6f7ff;f
 .sidebar{width:260px;padding:20px;background:linear-gradient(180deg,#021428,#001021);border-right:1px solid rgba(255,255,255,0.02)}
 .brand{font-weight:800;color:var(--accent);margin-bottom:12px}
 .catatal-small{width:100%;border-radius:8px;display:block;margin-bottom:12px}
-.navbtn{display:block;width:100%;padding:10px;border-radius:8px;background:transparent;color:#dff; border:0;text-align:left;margin-bottom:8px;cursor:pointer}
+.navbtn{display:block;width:100%;padding:10px;border-radius:8px;background:transparent;color:#dff;border:0;text-align:left;margin-bottom:8px;cursor:pointer}
 .navbtn.active{background:rgba(0,212,255,0.06)}
 .mode{margin-top:20px}
 .mode label{display:block;color:var(--muted);margin-bottom:6px}
@@ -21,14 +20,13 @@ body{margin:0;background:linear-gradient(180deg,#000814,#00172b);color:#e6f7ff;f
 .catatal-hero{width:220px;filter:drop-shadow(0 8px 25px rgba(0,212,255,0.12))}
 .cta .btn{margin-right:8px}
 .btn{padding:10px 16px;border-radius:10px;border:0;cursor:pointer;background:var(--accent);color:#001}
-.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06;color:#dff}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);}
 .btn.primary{background:linear-gradient(90deg,var(--accent),#00ffa6);color:#001}
 .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px;margin-top:14px;border:1px solid rgba(255,255,255,0.03)}
 .question{font-size:18px;margin-bottom:10px}
-.input, input{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+input{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
 .card-actions{display:flex;gap:8px;margin-top:8px}
 .feedback{margin-top:8px;color:var(--muted);padding:8px;border-radius:8px}
 .options{display:flex;flex-direction:column;gap:8px;margin-top:8px}
 .small{font-size:12px;padding:6px 10px}
 .stats{margin-top:20px;display:flex;gap:20px;color:var(--muted)}
-pre{background:#011; padding:10px;border-radius:8px;color:#9df}
