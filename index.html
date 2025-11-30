@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>A Jornada do Catatal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="tela-inicial" class="tela">
+        <h1 class="titulo">A Jornada do Catatal</h1>
+        <img src="https://via.placeholder.com/250x250/0000FF/FFFFFF?text=CATATAL" class="catatal">
+        <button onclick="iniciarJogo()" class="botao">Começar Aventura</button>
+    </div>
+
+    <div id="menu" class="tela escondido">
+        <h2>Painel do Explorador</h2>
+        <p>Pontuação total: <span id="pontos-total">0</span></p>
+
+        <button class="botao" onclick="abrirModulo('matematica')">Matemática</button>
+        <button class="botao" onclick="abrirModulo('programacao')">Programação</button>
+        <button class="botao" onclick="abrirModulo('htmlcss')">HTML e CSS</button>
+    </div>
+
+    <!-- Módulo: Matemática -->
+    <div id="matematica" class="tela escondido">
+        <h2>Desafios de Matemática</h2>
+        <p id="pergunta-mat"></p>
+        <input type="number" id="resposta-mat">
+        <button class="botao" onclick="verificarMatematica()">Responder</button>
+        <p id="feedback-mat"></p>
+        <button onclick="voltarMenu()" class="botao-voltar">Voltar</button>
+    </div>
+
+    <!-- Módulo: Programação -->
+    <div id="programacao" class="tela escondido">
+        <h2>Desafios de Programação</h2>
+        <p id="pergunta-prog"></p>
+        <input type="text" id="resposta-prog">
+        <button class="botao" onclick="verificarProgramacao()">Responder</button>
+        <p id="feedback-prog"></p>
+        <button onclick="voltarMenu()" class="botao-voltar">Voltar</button>
+    </div>
+
+    <!-- Módulo: HTML/CSS -->
+    <div id="htmlcss" class="tela escondido">
+        <h2>Desafios de HTML/CSS</h2>
+        <p id="pergunta-web"></p>
+        <div id="opcoes-web"></div>
+        <p id="feedback-web"></p>
+        <button onclick="voltarMenu()" class="botao-voltar">Voltar</button>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
