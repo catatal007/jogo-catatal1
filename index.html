@@ -6,28 +6,46 @@
     <title>CodeMaster Academy</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="container">
-        <h1>CodeMaster Academy</h1>
+    <header>
+        <h1>🐱🤖 CodeMaster Academy</h1>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="teoria.html">Teoria</a>
+            <a href="ranking.html">Ranking</a>
+        </nav>
+    </header>
 
-        <div id="robot">
-            <img src="catatal1.png" alt="Catatal" class="robot-img">
+    <section class="hero">
+        <img src="catatal1.png" class="hero-catatal">
+
+        <div class="hero-text">
+            <h2>Aprenda Programação, Lógica e Matemática com o Catatal!</h2>
+            <p>Treine, aprenda e evolua como um verdadeiro mestre do código!</p>
+
+            <button onclick="startGame()" class="btn-primary">🎮 Começar Jogo</button>
         </div>
+    </section>
 
-        <p>Treine com o Catatal! Aprenda → Estude → Jogue!</p>
+    <section id="gameSection" class="hidden">
 
-        <a href="teoria.html">
-            <button>📘 Estudar Teoria</button>
-        </a>
-
-        <button id="startBtn">🎮 Começar Jogo</button>
+        <div class="level-select">
+            <h2>Escolha a dificuldade</h2>
+            <button onclick="setLevel('easy')" class="level easy">Fácil</button>
+            <button onclick="setLevel('medium')" class="level medium">Médio</button>
+            <button onclick="setLevel('hard')" class="level hard">Difícil</button>
+        </div>
 
         <div id="questionBox" class="hidden">
+            <img src="catatal-thinking.png" class="catatal-side">
+
             <h3 id="questionText"></h3>
+
             <div id="answers"></div>
         </div>
-    </div>
+    </section>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
